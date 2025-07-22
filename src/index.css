@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: 258 69% 59%; /* #5E6AD2 - Linear Purple */
+  --accent: 195 100% 50%; /* #00D2FF - Linear Cyan */
+  --background: 210 20% 98%; /* #FAFBFC - Linear Light */
+  --dark-mode: 220 26% 7%; /* #0D1117 - Linear Dark */
+  --foreground: 220 26% 7%; /* #0D1117 - Linear Dark Text */
+  --muted: 215 16% 47%; /* #6B727E - Linear Muted */
+  --border: 214 32% 91%; /* #E4E7EB - Linear Border */
+  --card: 0 0% 100%; /* #FFFFFF - Linear Card */
+  --popover: 0 0% 100%; /* #FFFFFF - Linear Popover */
+  --primary-foreground: 0 0% 100%; /* White text on primary */
+  --accent-foreground: 220 26% 7%; /* Dark text on accent */
+  --muted-foreground: 215 25% 27%; /* #3C4149 - Linear Muted Text */
+  --destructive: 0 84% 60%; /* Red for destructive actions */
+  --destructive-foreground: 0 0% 100%; /* White text on destructive */
+  --ring: 258 69% 59%; /* Focus ring color */
+  --radius: 0.5rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: Inter, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Linear-inspired animations */
+@keyframes fade-in-up {
+  0% {
+    transform: translateY(20px);
+    opacity: 0%;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 100%;
+  }
+}
+
+@keyframes subtle-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 10%);
+  }
+
+  50% {
+    box-shadow: 0 0 0 4px hsl(var(--primary) / 10%);
+  }
+}
+
+@keyframes gentle-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.linear-card {
+  animation: fade-in-up 0.6s ease-out;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px -1px rgb(0 0 0 / 10%);
+  transition: all 0.2s ease-in-out;
+}
+
+.linear-card:hover {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
+  transform: translateY(-1px);
+}
+
+.linear-button {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+}
+
+.linear-button:hover {
+  background: hsl(var(--primary) / 90%);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
+  transform: translateY(-1px);
+}
+
+.linear-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+}
+
+.linear-input {
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+.linear-input:focus {
+  outline: none;
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 10%);
+}
+
+.subtle-glow {
+  animation: subtle-glow 3s ease-in-out infinite;
+}
+
+.gentle-pulse {
+  animation: gentle-pulse 2s ease-in-out infinite;
+}
+
+.linear-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+}
+
+.linear-grid {
+  background-image: 
+    linear-gradient(hsl(var(--border)) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 50%;
+}
+
+/* Custom scrollbar - Linear style */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+
+/* Loading animation - Linear style */
+@keyframes linear-loading {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.linear-loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.linear-loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, hsl(var(--primary) / 10%), transparent);
+  animation: linear-loading 1.5s ease-in-out infinite;
+}
+
+/* Typography improvements */
+.text-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
